@@ -35,13 +35,13 @@ class Employee {
   Employee() {}
 
   Employee.widthFull(
-      {@required String id,
+      {@required int id,
       @required String name,
-      @required bool gender,
+      @required int gender,
       @required int position}) {
-    _id = id;
+    _id = id.toString();
     _name = name;
-    _gender = gender == true ? EGender.male : EGender.female;
+    _gender = gender == 0 ? EGender.male : EGender.female;
 
     switch (position) {
       case 0:

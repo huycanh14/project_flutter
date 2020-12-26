@@ -15,7 +15,7 @@ class AccountService with AbstractAccount {
       int _id = await _db.rawInsert(
           'INSERT INTO $TB_ACCOUNT(username, password) VALUES(?, ?)',
           [account.username, account.password]);
-      _db.close();
+      //_db.close();
       return _id > 0 ? 201 : 401;
     } on Exception catch (_) {
       return 401;
@@ -36,7 +36,8 @@ class AccountService with AbstractAccount {
       List<Map> result = await _db.rawQuery(
           'SELECT * FROM $TB_ACCOUNT WHERE username = ? AND password = ?',
           [username, password]);
-      _db.close();
+
+      //_db.close();
       if (result[0] != null) {
         _prefs.setString('accountData', result[0].toString());
         return 200;
