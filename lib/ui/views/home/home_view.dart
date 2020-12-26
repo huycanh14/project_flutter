@@ -10,26 +10,31 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  var load = 1;
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        title: Text("Chào mừng bạn đã quay trở lại"),
+        title: Text("Danh sách nhân viên"),
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         child: Column(
           children: [
             Expanded(
-              child: EmployeeListView(),
+              child: EmployeeListView(load),
             )
           ],
         ),
       ),
       drawer: DrawerView(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            Navigator.pushNamed(context, Routes.employeeCreateView),
+        onPressed: () => Navigator.pushNamed(context, Routes.employeeCreateView)
+            .then((value) => {
+                  setState(() {
+                    load = 3;
+                  })
+                }),
         tooltip: 'Thêm nhân viên',
         child: const Icon(Icons.add),
       ),
