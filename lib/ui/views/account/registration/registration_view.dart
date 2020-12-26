@@ -35,9 +35,9 @@ class _RegistrationViewState extends State<RegistrationView> {
                           Padding(
                             padding: EdgeInsets.all(10.0),
                             child: TextFormField(
-                              controller: model.email,
+                              controller: model.username,
                               validator: (value) {
-                                return model.checkValidateEmail(value);
+                                return model.checkValidateUsername(value);
                               },
                               decoration: InputDecoration(
                                 labelText: "Nhập tài khoản của bạn",
@@ -84,7 +84,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                               child: RaisedButton(
                                 onPressed: () => {
                                   if (_formKey.currentState.validate())
-                                    {model.signUp()}
+                                    {model.signUp(context)}
                                 },
                                 textColor: Colors.white,
                                 color: Colors.lightGreen,

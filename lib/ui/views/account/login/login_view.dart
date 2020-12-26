@@ -35,9 +35,9 @@ class _LoginViewState extends State<LoginView> {
                           Padding(
                             padding: EdgeInsets.all(10.0),
                             child: TextFormField(
-                              controller: model.email,
+                              controller: model.username,
                               validator: (value) {
-                                return model.checkValidateEmail(value);
+                                return model.checkValidateUsername(value);
                               },
                               decoration: InputDecoration(
                                 labelText: "Nhập tài khoản của bạn",
@@ -89,7 +89,7 @@ class _LoginViewState extends State<LoginView> {
                                 textColor: Colors.white,
                                 color: Colors.lightGreen,
                                 child: Text(
-                                  'Đăng nhập',
+                                  'Tạo tài khoản',
                                   style: TextStyle(fontSize: 20),
                                 ),
                                 padding: EdgeInsets.all(0),

@@ -7,17 +7,17 @@ class LoginViewModel extends BaseViewModel {
   Account _account = new Account();
   Account get account => _account;
 
-  TextEditingController _email = TextEditingController();
+  TextEditingController _username = TextEditingController();
   TextEditingController _password = TextEditingController();
   Icon _iconPassword = Icon(Icons.visibility_off);
   EIconPass _icon = EIconPass.visibility_off;
   bool check = true;
 
-  TextEditingController get email => _email;
+  TextEditingController get username => _username;
   TextEditingController get password => _password;
   Icon get iconPassword => _iconPassword; //visibility_off
 
-  String checkValidateEmail(value) {
+  String checkValidateUsername(value) {
     if (value.isEmpty) return "Tài khoản bạn đang để trống";
     return null;
   }
