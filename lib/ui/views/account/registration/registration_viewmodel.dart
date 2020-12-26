@@ -3,7 +3,7 @@ import 'package:app_quanlynhanvien/models/Account.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-class LoginViewModel extends BaseViewModel {
+class RegistrationViewModel extends BaseViewModel {
   Account _account = new Account();
   Account get account => _account;
 
@@ -27,7 +27,7 @@ class LoginViewModel extends BaseViewModel {
     return null;
   }
 
-  signIn() {}
+  signUp() {}
   void clickIconPassword() {
     if (_icon == EIconPass.visibility_off) {
       _icon = EIconPass.visibility;

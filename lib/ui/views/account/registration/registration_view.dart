@@ -1,24 +1,24 @@
 import 'package:app_quanlynhanvien/app/router/router.gr.dart';
 import 'package:app_quanlynhanvien/constants/background_const.dart';
 import 'package:app_quanlynhanvien/constants/text_const.dart';
-import 'package:app_quanlynhanvien/ui/views/account/login/login_viewmodel.dart';
+import 'package:app_quanlynhanvien/ui/views/account/registration/registration_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-class LoginView extends StatefulWidget {
+class RegistrationView extends StatefulWidget {
   @override
-  _LoginViewState createState() => _LoginViewState();
+  _RegistrationViewState createState() => _RegistrationViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _RegistrationViewState extends State<RegistrationView> {
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-        builder: (context, LoginViewModel model, child) => Scaffold(
+        builder: (context, RegistrationViewModel model, child) => Scaffold(
             appBar: AppBar(
-              title: Text("Thông tin đăng nhập"),
+              title: Text("Tạo tài khoản"),
             ),
             body: Container(
               decoration: BG_SIGN_IN,
@@ -84,7 +84,7 @@ class _LoginViewState extends State<LoginView> {
                               child: RaisedButton(
                                 onPressed: () => {
                                   if (_formKey.currentState.validate())
-                                    {model.signIn()}
+                                    {model.signUp()}
                                 },
                                 textColor: Colors.white,
                                 color: Colors.lightGreen,
@@ -107,9 +107,9 @@ class _LoginViewState extends State<LoginView> {
                           children: <Widget>[
                             FlatButton(
                               onPressed: () => Navigator.pushReplacementNamed(
-                                  context, Routes.registrationView),
+                                  context, Routes.loginView),
                               child: Text(
-                                'Chưa có tài khoản, tạo tài khoản',
+                                'Đã có tài khoản, đăng nhập tài khoản',
                                 style: TEXT_HOME_ROUTE,
                               ),
                             ),
@@ -121,6 +121,6 @@ class _LoginViewState extends State<LoginView> {
                 ),
               ),
             )),
-        viewModelBuilder: () => LoginViewModel());
+        viewModelBuilder: () => RegistrationViewModel());
   }
 }

@@ -1,0 +1,1 @@
+enum EIconPass {visibility, visibility_off}
