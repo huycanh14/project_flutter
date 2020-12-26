@@ -23,7 +23,7 @@ class Connection {
         'CREATE TABLE account (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL UNIQUE, password TEXT NOT NULL)');
 
     await db.execute(
-        'CREATE TABLE employee(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, gender BOOLEAN NOT NULL, date TEXT NOT NULL, position INTEGER NOT NULL)');
+        'CREATE TABLE employee(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, gender BOOLEAN NOT NULL, position INTEGER NOT NULL)');
 
     // await db.rawInsert(sql)
   }

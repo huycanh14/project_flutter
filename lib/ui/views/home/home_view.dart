@@ -1,3 +1,4 @@
+import 'package:app_quanlynhanvien/app/router/router.gr.dart';
 import 'package:app_quanlynhanvien/ui/views/employee/list/list_view.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,8 @@ class _HomeViewState extends State<HomeView> {
       ),
       drawer: DrawerView(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => setState(() => {}),
+        onPressed: () =>
+            Navigator.pushNamed(context, Routes.employeeCreateView),
         tooltip: 'Thêm nhân viên',
         child: const Icon(Icons.add),
       ),

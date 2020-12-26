@@ -6,7 +6,6 @@ class Employee {
   String _id = "";
   String _name = "";
   EGender _gender = EGender.male;
-  String _date = "";
   EPosition _position = EPosition.employee;
 
   String get id => _id;
@@ -27,32 +26,23 @@ class Employee {
     _gender = value;
   }
 
-  String get date => _date;
-
-  set date(String value) {
-    _date = value;
-  }
-
   EPosition get position => _position;
 
   set position(EPosition value) {
     _position = value;
   }
 
-  Employee() {
-    this._date = new DateTime.now().toString();
-  }
+  Employee() {}
 
   Employee.widthFull(
       {@required String id,
       @required String name,
       @required bool gender,
-      @required String date,
       @required int position}) {
     _id = id;
     _name = name;
     _gender = gender == true ? EGender.male : EGender.female;
-    _date = date;
+
     switch (position) {
       case 0:
         _position = EPosition.director;
@@ -74,41 +64,22 @@ class Employee {
 
   void updateValue(
       {@required String name,
-      @required bool gender,
-      @required String date,
-      @required int position}) {
+      @required EGender gender,
+      @required EPosition position}) {
     _name = name;
-    _gender = gender == true ? EGender.male : EGender.female;
-    _date = date;
-    switch (position) {
-      case 0:
-        _position = EPosition.director;
-        break;
-      case 1:
-        _position = EPosition.deputy;
-        break;
-      case 2:
-        _position = EPosition.manager;
-        break;
-      case 3:
-        _position = EPosition.employee;
-        break;
-      default:
-        _position = EPosition.trainee;
-        break;
-    }
+    _gender = gender;
+    _position = position;
   }
 
   void updateFullValue(
       {@required String id,
       @required String name,
       @required bool gender,
-      @required String date,
       @required int position}) {
     _id = id;
     _name = name;
     _gender = gender == true ? EGender.male : EGender.female;
-    _date = date;
+
     switch (position) {
       case 0:
         _position = EPosition.director;
@@ -132,7 +103,6 @@ class Employee {
     var map = <dynamic, dynamic>{
       name: name,
       gender: gender,
-      date: date,
       position: position
     };
     if (id != null) {
@@ -145,7 +115,6 @@ class Employee {
     id = map[id];
     name = map[name];
     gender = map[gender];
-    date = map[date];
     position = map[position];
   }
 }

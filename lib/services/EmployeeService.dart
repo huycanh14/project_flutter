@@ -7,13 +7,13 @@ import 'package:sqflite/sqflite.dart';
 class EmployeeService with AbstractEmployee {
   Connection _context = Connection();
   @override
-  Future<void> deleteEmployee(Employee e) {
+  Future<int> deleteEmployee(Employee e) {
     // TODO: implement deleteEmployee
     throw UnimplementedError();
   }
 
   @override
-  Future<Employee> getEmployee(Employee e) {
+  Future<Employee> getEmployee(int id) {
     // TODO: implement getEmployee
     throw UnimplementedError();
   }
@@ -29,13 +29,26 @@ class EmployeeService with AbstractEmployee {
             id: result[i]['id'],
             name: result[i]['name'],
             gender: result[i]['gender'],
-            date: result[i]['date'],
             position: result[i]['position']));
   }
 
   @override
-  Future<void> updateEmployee(Employee e) {
+  Future<int> updateEmployee(Employee e) {
     // TODO: implement updateEmployee
     throw UnimplementedError();
+  }
+
+  @override
+  Future<int> createEmployee(Employee e) async {
+    try {
+      Database _db = await _context.db;
+      int _id = await _db.rawInsert(
+          'INSERT INTO $TB_EMPLOYEE(name, gender, position) VALUES(?, ?, ?)',
+          [e.name, e.gender, e.position]);
+      _db.close();
+      return _id > 0 ? 201 : 401;
+    } on Exception catch (_) {
+      return 401;
+    }
   }
 }

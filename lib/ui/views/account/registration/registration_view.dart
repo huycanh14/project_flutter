@@ -89,7 +89,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                                 textColor: Colors.white,
                                 color: Colors.lightGreen,
                                 child: Text(
-                                  'Đăng nhập',
+                                  'Tạo tài khoản',
                                   style: TextStyle(fontSize: 20),
                                 ),
                                 padding: EdgeInsets.all(0),

@@ -89,7 +89,7 @@ class _LoginViewState extends State<LoginView> {
                                 textColor: Colors.white,
                                 color: Colors.lightGreen,
                                 child: Text(
-                                  'Tạo tài khoản',
+                                  'Đặng nhập',
                                   style: TextStyle(fontSize: 20),
                                 ),
                                 padding: EdgeInsets.all(0),

@@ -32,10 +32,18 @@ class LoginViewModel extends BaseViewModel {
   }
 
   signIn(BuildContext context) async {
-    int result = await _service.signIn(username.text, password.text);
-    if (result == 200) {
-      Navigator.pushReplacementNamed(context, Routes.homeView);
-    } else {
+    try {
+      int result = await _service.signIn(username.text, password.text);
+      if (result == 200) {
+        Navigator.pushReplacementNamed(context, Routes.homeView);
+      } else {
+        return showDialog(
+            context: context,
+            builder: (BuildContext context) => WarningDialog(
+                title: "Lỗi đăng nhập",
+                message: "Thông tin đăng nhập chưa đúng"));
+      }
+    } on Exception catch (_) {
       return showDialog(
           context: context,
           builder: (BuildContext context) => WarningDialog(

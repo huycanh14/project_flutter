@@ -11,16 +11,19 @@ import 'package:flutter/material.dart';
 
 import '../../ui/views/account/login/login_view.dart';
 import '../../ui/views/account/registration/registration_view.dart';
+import '../../ui/views/employee/create/create_view.dart';
 import '../../ui/views/home/home_view.dart';
 
 class Routes {
   static const String loginView = '/';
   static const String homeView = '/home-view';
   static const String registrationView = '/registration-view';
+  static const String employeeCreateView = '/employee-create-view';
   static const all = <String>{
     loginView,
     homeView,
     registrationView,
+    employeeCreateView,
   };
 }
 
@@ -31,6 +34,7 @@ class Router extends RouterBase {
     RouteDef(Routes.loginView, page: LoginView),
     RouteDef(Routes.homeView, page: HomeView),
     RouteDef(Routes.registrationView, page: RegistrationView),
+    RouteDef(Routes.employeeCreateView, page: EmployeeCreateView),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -50,6 +54,12 @@ class Router extends RouterBase {
     RegistrationView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => RegistrationView(),
+        settings: data,
+      );
+    },
+    EmployeeCreateView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => EmployeeCreateView(),
         settings: data,
       );
     },
