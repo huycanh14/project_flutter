@@ -1,1 +1,1 @@
-enum Position { director, deputy, manager, employee, trainee }
+enum EPosition { director, deputy, manager, employee, trainee }
