@@ -84,7 +84,7 @@ class _LoginViewState extends State<LoginView> {
                               child: RaisedButton(
                                 onPressed: () => {
                                   if (_formKey.currentState.validate())
-                                    {model.signIn()}
+                                    {model.signIn(context)}
                                 },
                                 textColor: Colors.white,
                                 color: Colors.lightGreen,

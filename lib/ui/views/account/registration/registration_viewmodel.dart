@@ -35,7 +35,7 @@ class RegistrationViewModel extends BaseViewModel {
     _account.updateValue(username: username.text, password: password.text);
     int result = await _service.signUp(_account);
     print(result);
-    if (result == 200) {
+    if (result == 201) {
       return showDialog(
           context: context,
           builder: (BuildContext context) => SuccessDialog(

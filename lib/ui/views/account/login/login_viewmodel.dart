@@ -1,11 +1,14 @@
+import 'package:app_quanlynhanvien/app/router/router.gr.dart';
 import 'package:app_quanlynhanvien/enums/EIconPass.dart';
 import 'package:app_quanlynhanvien/models/Account.dart';
+import 'package:app_quanlynhanvien/services/AccountService.dart';
+import 'package:app_quanlynhanvien/ui/widgets/dialogs/warning.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class LoginViewModel extends BaseViewModel {
   Account _account = new Account();
-  Account get account => _account;
+  AccountService _service = new AccountService();
 
   TextEditingController _username = TextEditingController();
   TextEditingController _password = TextEditingController();
@@ -16,6 +19,7 @@ class LoginViewModel extends BaseViewModel {
   TextEditingController get username => _username;
   TextEditingController get password => _password;
   Icon get iconPassword => _iconPassword; //visibility_off
+  Account get account => _account;
 
   String checkValidateUsername(value) {
     if (value.isEmpty) return "Tài khoản bạn đang để trống";
@@ -27,7 +31,19 @@ class LoginViewModel extends BaseViewModel {
     return null;
   }
 
-  signIn() {}
+  signIn(BuildContext context) async {
+    int result = await _service.signIn(username.text, password.text);
+    if (result == 200) {
+      Navigator.pushReplacementNamed(context, Routes.homeView);
+    } else {
+      return showDialog(
+          context: context,
+          builder: (BuildContext context) => WarningDialog(
+              title: "Lỗi đăng nhập",
+              message: "Thông tin đăng nhập chưa đúng"));
+    }
+  }
+
   void clickIconPassword() {
     if (_icon == EIconPass.visibility_off) {
       _icon = EIconPass.visibility;
