@@ -2,10 +2,17 @@ import 'package:app_quanlynhanvien/enums/EGender.dart';
 import 'package:app_quanlynhanvien/enums/EPosition.dart';
 
 class Employee {
+  String _id = "";
   String _name = "";
   Gender _gender = Gender.male;
   String _date = "";
   Position _position = Position.employee;
+
+  String get id => _id;
+
+  set id(String value) {
+    _id = value;
+  }
 
   String get name => _name;
 
